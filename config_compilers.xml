@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config_compilers version="2.0">
+<compiler COMPILER="gnu" MACH="ashpc">
+  <NETCDF_PATH>/opt/spack/local/netcdf-combined-gcc11.4.1/</NETCDF_PATH>
+  <PNETCDF_PATH>/opt/spack/opt/spack/linux-icelake/parallel-netcdf-1.14.1-apubgmkqlpsscmonckwslunzqqbij553/</PNETCDF_PATH>
+  <HDF5_PATH>/opt/spack/opt/spack/linux-icelake/hdf5-1.14.6-fkzu6agezw6hfy5mjx3i2wlzdxi3saq6/</HDF5_PATH>
+  <FFLAGS>
+    <append> -fallow-argument-mismatch -fallow-invalid-boz </append>
+  </FFLAGS>
+  <CPPDEFS>
+    <append> -D_FillValue=NC_FillValue </append>
+  </CPPDEFS>
+  <SLIBS>
+    <append> -llapack -lblas </append>
+    <append> -L$(NETCDF_PATH)/lib -lnetcdff -lnetcdf </append>
+    <append> -L$(HDF5_PATH)/lib -lhdf5_hl -lhdf5 </append>
+    <append> -L$(PNETCDF_PATH)/lib -lpnetcdf </append>
+  </SLIBS>
+</compiler>
+
+<compiler COMPILER="intel" MACH="ashpc-intel">
+  <NETCDF_PATH>/opt/spack/local/netcdf-combined-intel2021.10.0/</NETCDF_PATH>
+  <PNETCDF_PATH>/opt/spack/opt/spack/linux-icelake/parallel-netcdf-1.14.1-jeji6ryoewe5h3stu66j36k5bjjk7ubx/</PNETCDF_PATH>
+  <HDF5_PATH>/opt/spack/opt/spack/linux-icelake/hdf5-1.14.6-3sufxvwdgsp3fm6znchdkqgclwlukbeu/</HDF5_PATH>
+  <FFLAGS>
+    <append> -fallow-argument-mismatch -fallow-invalid-boz </append>
+  </FFLAGS>
+  <CPPDEFS>
+    <append> -D_FillValue=NC_FillValue </append>
+  </CPPDEFS>
+  <SLIBS>
+    <append> -llapack -lblas </append>
+    <append> -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl </append>
+    <append> -L$(NETCDF_PATH)/lib -lnetcdff -lnetcdf </append>
+    <append> -L$(HDF5_PATH)/lib -lhdf5_hl -lhdf5 </append>
+    <append> -L$(PNETCDF_PATH)/lib -lpnetcdf </append>
+  </SLIBS>
+  <MPICC>mpiicc</MPICC>
+  <MPICXX>mpiicpc</MPICXX>
+  <MPIFC>mpiifort</MPIFC>
+  <SFC>ifort</SFC>
+  <SCC>icc</SCC>
+  <SCXX>icpc</SCXX>
+</compiler>
+
+</config_compilers>

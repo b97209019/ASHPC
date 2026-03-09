@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config_batch version="2.1">
+  <batch_system MACH="ashpc-gnu" type="slurm">
+    <batch_submit>sbatch</batch_submit>
+    <submit_args>
+      <arg flag="--time" name="$JOB_WALLCLOCK_TIME"/>
+      <arg flag="-p" name="$JOB_QUEUE"/>
+    </submit_args>
+
+    <queues>
+      <queue walltimemax="144:00:00" nodemin="1" nodemax="27" default="true">highspeed</queue>
+    </queues>
+  </batch_system>
+  <batch_system MACH="ashpc-intel" type="slurm">
+    <batch_submit>sbatch</batch_submit>
+    <submit_args>
+      <arg flag="--time" name="$JOB_WALLCLOCK_TIME"/>
+      <arg flag="-p" name="$JOB_QUEUE"/>
+    </submit_args>
+    <queues>
+      <queue walltimemax="144:00:00" nodemin="1" nodemax="27" default="true">highspeed</queue>
+    </queues>
+  </batch_system>
+
+</config_batch>
