@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config_machines version="2.0">
-  <machine MACH="ashpc">
+  <machine MACH="ashpc-gnu">
     <DESC>
       used for ASHPC
     </DESC>
@@ -63,7 +63,7 @@
 	<arg name="num_tasks">--ntasks={{ total_tasks }} </arg>
         <arg name="cpubind"> --cpu-bind=cores </arg>
         <arg name="mpi"> --mpi=pmi2 </arg>
-        <arg name="envUCX"> env UCX_NET_DEVICES=mlx5_0:1 UCX_TLS=rc_x,sm,self UCX_LOG_LEVEL=info </arg>
+        <arg name="psm3"> env I_MPI_DEBUG=5 I_MPI_PIN=1 FI_PROVIDER=psm3 I_MPI_FABRICS=ofi OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 </arg>
       </arguments>
     </mpirun>
     <module_system type="none" />
